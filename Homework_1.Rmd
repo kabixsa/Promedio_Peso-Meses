@@ -1,0 +1,26 @@
+--
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+# Crear una Matriz de pesos aleatorios.
+#set.seed(123)  # Establecer una semilla para reproducibilidad
+# Se utilizó runif que es una función en R para generar números aleatorios a partir de una distribución uniforme.
+
+matriz_weight <- matrix(runif(25, 160, 200), nrow = 5, ncol = 5)
+colnames(matriz_pesos) <- c("enero", "febrero", "marzo", "abril", "mayo")
+rownames(matriz_pesos) <- c("Persona1", "Persona2", "Persona3", "Persona4", "Persona5")
+
+# Calculando el peso promedio de cada persona
+promedio_personas <- rowMeans(matriz_weight)
+
+# Calculando el peso promedio en cada mes para todas las personas
+promedio_meses <- colMeans(matriz_weight)
+
+# Agregando la columna y fila de promedios a la matriz
+matriz_promedios <- cbind(matriz_weight, Promedio = promedio_personas)
+matriz_promedios <- rbind(matriz_promedios, c(Promedio = promedio_meses, NA))
+
+# Imprimiendo la matriz resultante
+print(matriz_promedios)
+```
